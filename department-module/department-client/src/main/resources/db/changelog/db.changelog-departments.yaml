@@ -1,0 +1,285 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1602003573085-1
+      author: oneightwo (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: departments_pkey
+                  name: department_id
+                  type: BIGINT
+              - column:
+                  name: creation_date
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: parent_id
+                  type: BIGINT
+            tableName: departments
+  - changeSet:
+      id: 1602003573085-2
+      author: oneightwo (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: employees_pkey
+                  name: employee_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: date_of_birth
+                  type: date
+              - column:
+                  name: date_of_dismissal
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: employment_date
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: gender
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: is_leader
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: patronymic
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  name: salary
+                  type: FLOAT8
+              - column:
+                  constraints:
+                    nullable: false
+                  name: surname
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: department_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: position_id
+                  type: BIGINT
+            tableName: employees
+  - changeSet:
+      id: 1602003573085-3
+      author: oneightwo (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: reports_pkey
+                  name: report_id
+                  type: BIGINT
+              - column:
+                  name: salary_fund
+                  type: FLOAT8
+              - column:
+                  name: department_id
+                  type: BIGINT
+            tableName: reports
+  - changeSet:
+      id: 1602003573085-4
+      author: oneightwo (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: positions_pkey
+                  name: position_id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: positions
+  - changeSet:
+      id: 1602003573085-5
+      author: oneightwo (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: histories_pkey
+                  name: history_id
+                  type: BIGINT
+              - column:
+                  name: creation_date
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  name: new_department
+                  type: JSONB
+              - column:
+                  name: old_department
+                  type: JSONB
+              - column:
+                  constraints:
+                    nullable: false
+                  name: type
+                  type: VARCHAR(255)
+            tableName: histories
+  - changeSet:
+      id: 1602003573085-6
+      author: oneightwo (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: department_id
+            baseTableName: reports
+            constraintName: fk4wfcjw8ho4k1q4mvxkknrxxr
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: department_id
+            referencedTableName: departments
+            validate: true
+  - changeSet:
+      id: 1602003573085-7
+      author: oneightwo (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: parent_id
+            baseTableName: departments
+            constraintName: fk63q917a0aq92i7gcw6h7f1jrv
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: department_id
+            referencedTableName: departments
+            validate: true
+  - changeSet:
+      id: 1602003573085-8
+      author: oneightwo (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: department_id
+            baseTableName: employees
+            constraintName: fkgy4qe3dnqrm3ktd76sxp7n4c2
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: department_id
+            referencedTableName: departments
+            validate: true
+  - changeSet:
+      id: 1602003573085-9
+      author: oneightwo (generated)
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: uk_j6cwks7xecs5jov19ro8ge3qk
+            tableName: departments
+  - changeSet:
+      id: 1602003573085-10
+      author: oneightwo (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: position_id
+            baseTableName: employees
+            constraintName: fkngcpgx7fx5kednw3m7u0u8of3
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: position_id
+            referencedTableName: positions
+            validate: true
+  - changeSet:
+      id: 1602003573085-11
+      author: oneightwo (generated)
+      changes:
+        - createSequence:
+            cacheSize: 1
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            sequenceName: department_seq
+            startValue: 1
+  - changeSet:
+      id: 1602003573085-12
+      author: oneightwo (generated)
+      changes:
+        - createSequence:
+            cacheSize: 1
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            sequenceName: history_seq
+            startValue: 1
+  - changeSet:
+      id: 1602003573085-13
+      author: oneightwo (generated)
+      changes:
+        - createSequence:
+            cacheSize: 1
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            sequenceName: position_seq
+            startValue: 1
+  - changeSet:
+      id: 1602003573085-14
+      author: oneightwo (generated)
+      changes:
+        - createSequence:
+            cacheSize: 1
+            cycle: false
+            dataType: bigint
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            sequenceName: report_seq
+            startValue: 1
+

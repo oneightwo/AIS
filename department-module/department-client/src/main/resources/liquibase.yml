@@ -1,0 +1,6 @@
+url: jdbc:postgresql://localhost:5432/department_db
+username: postgres
+password: 11347813
+driver: org.postgresql.Driver
+changeLogFile: db/changelog/db.changelog-master.yaml
+outputChangeLogFile: src/main/resources/db/changelog/liquibase-outputChangeLog.yaml

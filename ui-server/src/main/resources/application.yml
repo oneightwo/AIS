@@ -1,0 +1,36 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: ui-security-server
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/ui_security_db
+    username: postgres
+    password: 11347813
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+feign:
+  hystrix:
+    enabled: true
+
+keycloak:
+  realm: AIS
+  auth-server-url: http://localhost:8777/auth
+  resource: springboot-microservice
+  credentials:
+    secret: e058da76-efd6-4fcd-83f4-26169ca4cc7b
+  use-resource-role-mappings: true

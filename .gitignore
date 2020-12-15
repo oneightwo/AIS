@@ -1,0 +1,8 @@
+# Project exclude paths
+/common-core-api/target/
+/department-module/common-department-api/target/
+/department-module/department-client/target/
+/employee-module/common-employee-api/target/
+/employee-module/employee-client/target/
+/eureka-server/target/
+/zuul-service/target/

@@ -1,0 +1,150 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1602003072844-1
+      author: oneightwo (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: departments_pkey
+                  name: department_id
+                  type: BIGINT
+              - column:
+                  name: creation_date
+                  type: TIMESTAMP WITHOUT TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: parent_id
+                  type: BIGINT
+            tableName: departments
+  - changeSet:
+      id: 1602003072844-2
+      author: oneightwo (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: employees_pkey
+                  name: employee_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: date_of_birth
+                  type: date
+              - column:
+                  name: date_of_dismissal
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: employment_date
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: gender
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: is_leader
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: patronymic
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: position_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: salary
+                  type: FLOAT8
+              - column:
+                  constraints:
+                    nullable: false
+                  name: surname
+                  type: VARCHAR(255)
+              - column:
+                  name: department_id
+                  type: BIGINT
+            tableName: employees
+  - changeSet:
+      id: 1602003072844-3
+      author: oneightwo (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: parent_id
+            baseTableName: departments
+            constraintName: fk63q917a0aq92i7gcw6h7f1jrv
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: department_id
+            referencedTableName: departments
+            validate: true
+  - changeSet:
+      id: 1602003072844-4
+      author: oneightwo (generated)
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: department_id
+            baseTableName: employees
+            constraintName: fkgy4qe3dnqrm3ktd76sxp7n4c2
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: department_id
+            referencedTableName: departments
+            validate: true
+  - changeSet:
+      id: 1602003072844-5
+      author: oneightwo (generated)
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: uk_j6cwks7xecs5jov19ro8ge3qk
+            tableName: departments
+  - changeSet:
+      id: 1602003072844-6
+      author: oneightwo (generated)
+      changes:
+        - createSequence:
+            cacheSize: 1
+            cycle: false
+            incrementBy: 1
+            maxValue: 9223372036854775807
+            minValue: 1
+            sequenceName: employee_seq
+            startValue: 1
+
